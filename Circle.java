@@ -1,44 +1,51 @@
 public class Circle {
-    private double radius = 1.0;   // mặc định
-    private String color = "red";  // mặc định
+    // các thuộc tính có mức độ truy xuất private
+    private double radius;
+    private String color;
 
-    // Constructor mặc định
+    // Bộ khởi tạo
     public Circle() {
-        // radius = 1.0, color = "red"
+        this.radius = 1.0;
+        this.color = "red";
+        System.out.println("Constructed a Circle with Circle()"); // Để kiểm tra
     }
 
-    // Constructor có tham số (chỉ bán kính)
     public Circle(double radius) {
         this.radius = radius;
-        this.color = "red"; // vẫn giữ mặc định
+        this.color = "red";
+        System.out.println("Constructed a Circle with Circle(radius)");
     }
 
-    // Getter bán kính
+    public Circle(double radius, String color) {
+        this.radius = radius;
+        this.color = color;
+        System.out.println("Constructed a Circle with Circle(radius, color)");
+    }
+
+    // phương thức công khai getters và setters để lấy thông tin thuộc tính private
     public double getRadius() {
-        return radius;
+        return this.radius;
     }
 
-    // Getter màu (nếu cần)
     public String getColor() {
-        return color;
+        return this.color;
     }
 
-    // Getter diện tích
+    public void setRadius(double radius) {
+        this.radius = radius;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    // Mô tả thông tin đối tượng theo dạng chuỗi
+    public String toString() {
+        return "Circle[radius=" + radius + ",color=" + color + "]";
+    }
+
+    // Tính diện tích hình tròn
     public double getArea() {
-        return Math.PI * radius * radius;
-    }
-
-    // Test
-    public static void main(String[] args) {
-        Circle c1 = new Circle();      // mặc định radius=1.0, color=red
-        Circle c2 = new Circle(2.5);   // radius=2.5, color=red
-
-        System.out.println("Circle 1: radius=" + c1.getRadius() +
-                           ", color=" + c1.getColor() +
-                           ", area=" + c1.getArea());
-
-        System.out.println("Circle 2: radius=" + c2.getRadius() +
-                           ", color=" + c2.getColor() +
-                           ", area=" + c2.getArea());
+        return radius * radius * Math.PI;
     }
 }
