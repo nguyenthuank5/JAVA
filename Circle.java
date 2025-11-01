@@ -1,51 +1,30 @@
-public class Circle {
-    // các thuộc tính có mức độ truy xuất private
+package code9;
+public class Circle extends shape {
     private double radius;
-    private String color;
 
-    // Bộ khởi tạo
     public Circle() {
         this.radius = 1.0;
-        this.color = "red";
-        System.out.println("Constructed a Circle with Circle()"); // Để kiểm tra
     }
-
     public Circle(double radius) {
         this.radius = radius;
-        this.color = "red";
-        System.out.println("Constructed a Circle with Circle(radius)");
     }
-
-    public Circle(double radius, String color) {
+    public void setCircle(double radius) {
         this.radius = radius;
-        this.color = color;
-        System.out.println("Constructed a Circle with Circle(radius, color)");
     }
-
-    // phương thức công khai getters và setters để lấy thông tin thuộc tính private
     public double getRadius() {
-        return this.radius;
+        return radius;
     }
-
-    public String getColor() {
-        return this.color;
-    }
-
-    public void setRadius(double radius) {
-        this.radius = radius;
-    }
-
-    public void setColor(String color) {
-        this.color = color;
-    }
-
-    // Mô tả thông tin đối tượng theo dạng chuỗi
-    public String toString() {
-        return "Circle[radius=" + radius + ",color=" + color + "]";
-    }
-
-    // Tính diện tích hình tròn
+    @Override
     public double getArea() {
-        return radius * radius * Math.PI;
+        return Math.PI * radius * radius;
     }
+    @Override
+    public double getPerimeter() {
+        return 2 * Math.PI * radius;
+    }
+    @Override
+    public String toString() {
+        return String.format("Hinh tron (r=%.2f)", radius);
+    }
+    
 }
